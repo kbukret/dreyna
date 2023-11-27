@@ -1,0 +1,85 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  {% load static %}
+    <link href="{% static 'DrSolutionApp/aos/aos.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'DrSolutionApp/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'DrSolutionApp/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+
+    <!--MIS ESTILOS-->
+    <link
+      href="{% static 'DrSolutionApp/css/stylePanel.css' %}"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+      
+    <header id="header" class="fixed-top">
+        <div class=" d-flex align-items-center gap-5 position-relative ">
+          <div class="logo">
+            <a href="index.php"><img src="{% static 'DrSolutionApp/img/logopanel.png' %}" alt="" class="img-fluid-logo"></a>
+          </div>
+          <div class="usuario">
+            {% if user.is_authenticated %}
+            <p> Usuario: <strong>{{user.username.upper}}</strong>
+            Grupo:{{group_list}}</p>
+            {% else %}
+            sin loguin 
+            {% endif %}
+          </div>
+          <nav id="navbar" class="navbar">
+            <ul>
+                <li class="dropdown"><a href="#"><span>Promo/Oferta</span> <i class="bi bi-chevron-down"></i></a>
+                  <ul>
+                    <li class="dropdown"><a href="#"><span>Promociones</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                        <li><a href="../panel/cargaPromocion.php"><span>Promociones Fijas</a></li>
+                        <li><a href="../panel/cargaPromocionSlider.php">Carga Slider</a></li>
+                        <li><a href="../panel/listado_Promocion.php">Listar / Modificar</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a href="#"><span>Ofertas</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                        <li><a href="../panel/cargaOferta.php"><span>Slider</a></li>
+                        <li><a href="../panel/listado_Oferta.php">Listar / Modificar</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+             </ul>
+                <li><a href="{% url 'cerrar_sesion' %}"><span>Salir</span></a></li>
+                  <i class="bi bi-list mobile-nav-toggle"></i>
+                  </nav>
+                  </div>
+      </header>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+    <br />
+    <footer id="footer">
+        <div class="pt-3" style="text-align: center ;">
+          &copy; Copyright <strong><span>Super Nataly</span></strong>. Todos los derechos reservados.
+        </div>
+      </footer>
+    <script src="{% static 'DrSolutionApp/aos/aos.js' %}"></script>
+    <script src="{% static 'DrSolutionApp/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'DrSolutionApp/js/main.js' %}"></script>
+    <script src="{% static 'DrSolutionApp/js/deslogueo.js' %}"></script>
+  </body>
+</html>

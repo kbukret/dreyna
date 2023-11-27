@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elegant Dashboard | Dashboard</title>
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon" /> -->
+    <!-- Custom styles -->
+    <link
+      href="{% static 'DrSolutionApp/css/style.min.css' %}"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="layer"></div>
+    <!-- ! Body -->
+    <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+    <div class="page-flex">
+      <!-- ! Sidebar -->
+      {% comment %} {% if user.is_authenticated %} {% endcomment %}
+        {% include 'navbar/vertical.html' %}
+      {% comment %} {% endif %} {% endcomment %}
+        <!-- ! Main -->
+        <main class="main users chart-page" id="skip-target">
+          <div class="container" style="width: fit-content">{% block content %} {% endblock %}</div>
+        </main>
+        <!-- ! Footer -->
+        <footer class="footer">
+          <div class="container footer--flex">
+            <div class="footer-start">
+              <p>
+                2023 © Dr.Solutions
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- Chart library -->
+    <script src="{% static 'DrSolutionApp/pluggins/chart.min.js' %}"></script>
+    <!-- Icons library -->
+    <script src="{% static 'DrSolutionApp/pluggins/feather.min.js' %}"></script>
+    <!-- Custom scripts -->
+    <script src="{% static 'DrSolutionApp/js/script.js' %}"></script>
+  </body>
+</html>

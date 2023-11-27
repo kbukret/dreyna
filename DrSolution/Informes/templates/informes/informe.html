@@ -1,0 +1,14 @@
+{% extends "DrSolutionApp/index.html" %} {% load static %} {% block content %}
+<div class="row stat-cards" style="margin-top: 30px">
+  <div class="top-cat-title" style="width: 100%">
+  {% if iframe == 'None' %}
+    <center><h3>Sin Informe Actualizado</h3></center>
+  </div>
+  {% else %} 
+  <center><h3>{{titulo|upper}}</h3></center><br>
+  {{iframe|safe}}
+  </div>
+
+   {% endif %}
+</div>
+{% endblock %}
